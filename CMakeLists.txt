@@ -205,6 +205,9 @@ if(NOT CMAKE_PREFIX_PATH)
     endif()
 endif()
 
+# Set compiled-in install dir, cache so it can be overridden
+set(GNSSSDR_INSTALL_DIR_DEF ${CMAKE_INSTALL_PREFIX} CACHE STRING "Compiled-in install dir definition")
+
 # Detect Linux Distribution
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux|kFreeBSD|GNU")
     include(DetectLinuxDistro)

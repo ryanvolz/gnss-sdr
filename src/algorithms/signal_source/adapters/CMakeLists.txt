@@ -288,7 +288,7 @@ if(ENABLE_CLANG_TIDY)
 endif()
 
 target_compile_definitions(signal_source_adapters
-    PRIVATE -DGNSSSDR_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}"
+    PRIVATE -DGNSSSDR_INSTALL_DIR="${GNSSSDR_INSTALL_DIR_DEF}"
 )
 
 set_property(TARGET signal_source_adapters

@@ -160,7 +160,7 @@ target_include_directories(algorithms_libs
 )
 
 target_compile_definitions(algorithms_libs
-    PUBLIC -DGNSSSDR_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}"
+    PUBLIC -DGNSSSDR_INSTALL_DIR="${GNSSSDR_INSTALL_DIR_DEF}"
 )
 
 if(DO_NOT_USE_LAMBDAS)
@@ -218,7 +218,7 @@ if(GFLAGS_GREATER_20 OR ${LOCAL_GFLAGS})
 endif()
 
 target_compile_definitions(gnss_sdr_flags
-    PRIVATE -DGNSSSDR_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}"
+    PRIVATE -DGNSSSDR_INSTALL_DIR="${GNSSSDR_INSTALL_DIR_DEF}"
 )
 
 if(ENABLE_CLANG_TIDY)
