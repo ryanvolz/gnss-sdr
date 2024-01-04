@@ -23,6 +23,13 @@ endif()
 
 pkg_check_modules(PC_VOLK_GNSSSDR QUIET volk_gnsssdr)
 
+# See if VolkGnsssdr can be found via cmake config file
+find_package(VolkGnsssdr QUIET CONFIG)
+# alias config-provided target to the name used elsewhere
+if(VolkGnsssdr_FOUND AND TARGET VolkGnsssdr::volk_gnsssdr)
+    add_library(Volkgnsssdr::volkgnsssdr ALIAS VolkGnsssdr::volk_gnsssdr)
+endif()
+
 if(NOT VOLKGNSSSDR_ROOT)
     set(VOLKGNSSSDR_ROOT_USER_PROVIDED /usr/local)
 else()

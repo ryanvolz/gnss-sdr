@@ -23,6 +23,18 @@ if(NOT GR_REQUIRED_COMPONENTS)
     set(GR_REQUIRED_COMPONENTS RUNTIME PMT BLOCKS FFT FILTER ANALOG)
 endif()
 
+# See if modern GNU Radio can be found by its provided GnuradioConfig.cmake
+find_package(Gnuradio "3.10" QUIET COMPONENTS ${GR_REQUIRED_COMPONENTS} CONFIG)
+if(Gnuradio_FOUND)
+    # alias GnuradioConfig-provided targets to the names used elsewhere
+    # GR_COMPONENTS list does not have pmt and runtime, so add them
+    foreach(component pmt runtime ${GR_COMPONENTS})
+        if(TARGET gnuradio::gnuradio-${component})
+            add_library(Gnuradio::${component} ALIAS gnuradio::gnuradio-${component})
+        endif()
+    endforeach(component)
+endif()
+
 # Allows us to use all .cmake files in this directory
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR})
 
