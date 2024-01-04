@@ -27,6 +27,7 @@ target_link_libraries(obs_gr_blocks
     PUBLIC
         Boost::headers
         Gnuradio::blocks
+        Gnuradio::runtime
         observables_libs
     PRIVATE
         algorithms_libs
