@@ -451,9 +451,9 @@ endif()
 # Set minimal C and C++ standards
 ################################################################################
 if(NOT (CMAKE_VERSION VERSION_LESS "3.1"))
-    set(CMAKE_C_STANDARD 11)
-    set(CMAKE_CXX_STANDARD 14)
-    set(CMAKE_CXX_EXTENSIONS OFF)
+    set(CMAKE_C_STANDARD 11 CACHE STRING "Default minimum C standard")
+    set(CMAKE_CXX_STANDARD 14 CACHE STRING "Default minimum C++ standard")
+    set(CMAKE_CXX_EXTENSIONS OFF CACHE BOOL "Default enable/disable compiler extensions")
 else()
     add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,C>:-std=gnu11>")
     set(CMAKE_C_STANDARD 11)   # set variable just for reporting
